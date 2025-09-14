@@ -52,6 +52,7 @@ function SkillCard({
             <Button
               className="w-16"
               onClick={handleIncrementDecrement(minuteIncrement)}
+              disabled={minutesToday - minuteIncrement < 0 && !isAdditionMode}
               key={minuteIncrement}
             >
               {formatButtonLabel(minuteIncrement)}
