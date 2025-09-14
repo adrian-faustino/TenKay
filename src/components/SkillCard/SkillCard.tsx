@@ -60,10 +60,12 @@ function SkillCard({
 
           <div className="flex flex-col items-center">
             <Switch
-              id="mode"
+              id={`addition-mode-${title}`}
               onClick={() => setIsAdditionMode((prev) => !prev)}
             />
-            <Label htmlFor="mode">{isAdditionMode ? "add" : "sub"}</Label>
+            <Label htmlFor={`addition-mode-${title}`}>
+              {isAdditionMode ? "add" : "sub"}
+            </Label>
           </div>
         </div>
       </CardContent>
