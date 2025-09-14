@@ -19,9 +19,6 @@ function SkillCard({
 
   const handleIncrementDecrement = (delta: number) => () => {
     let adjustDelta = isAdditionMode ? delta : -delta;
-    // Prevent negative minutes today
-    if (minutesToday + adjustDelta < 0) return;
-
     onMinutesChange(adjustDelta);
   };
 
