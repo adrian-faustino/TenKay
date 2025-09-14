@@ -1,4 +1,4 @@
-const DEFAULT_TIME_DECIMAL_PLACES = 4;
+const DEFAULT_TIME_DECIMAL_PLACES = 2;
 
 export const minutesToHours = (
   minutes: number,
