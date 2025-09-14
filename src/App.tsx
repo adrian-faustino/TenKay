@@ -4,6 +4,7 @@ import Skills from "./views/Skills";
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
+import Profile from "./views/Profile";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/skills" element={<Skills />} />
+          <Route path="/profile" element={<Profile />} />
         </Routes>
         {/* TODO: create app routes */}
       </main>
