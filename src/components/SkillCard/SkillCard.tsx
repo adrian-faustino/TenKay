@@ -61,7 +61,8 @@ function SkillCard({
           <div className="flex flex-col items-center">
             <Switch
               id={`addition-mode-${title}`}
-              onClick={() => setIsAdditionMode((prev) => !prev)}
+              checked={isAdditionMode}
+              onCheckedChange={() => setIsAdditionMode((prev) => !prev)}
             />
             <Label htmlFor={`addition-mode-${title}`}>
               {isAdditionMode ? "add" : "sub"}
