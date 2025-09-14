@@ -1,6 +1,16 @@
 import { useState } from "react";
 import { MINUTE_INCREMENTS } from "./constants";
 import { minutesToHours } from "@/utils/datetime";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  Label,
+  Progress,
+  Switch,
+} from "@ui";
 
 interface SkillCardProps {
   title: string;
@@ -22,35 +32,52 @@ function SkillCard({
     onMinutesChange(adjustDelta);
   };
 
+  const formatButtonLabel = (minuteIncrement: number) => {
+    let sign = isAdditionMode ? "+" : "-";
+    return `${sign}${minuteIncrement}min`;
+  };
+
   return (
-    <div>
-      {/* Header */}
-      <div>
-        <span>{title}</span>
-        <span>Today: {minutesToday}mins </span>
-      </div>
+    <Card>
+      <CardHeader>
+        <div className="flex justify-between">
+          <span>{title}</span>
+          <span>Today: {minutesToday}mins </span>
+        </div>
+      </CardHeader>
 
-      {/* Body */}
-      <div>
-        {MINUTE_INCREMENTS.map((minuteIncrement) => (
-          <button
-            onClick={handleIncrementDecrement(minuteIncrement)}
-            key={minuteIncrement}
-          >
-            <span>{isAdditionMode ? "+" : "-"}</span>
-            <span>{minuteIncrement}min</span>
-          </button>
-        ))}
+      <CardContent>
+        <div className="flex gap-1">
+          {MINUTE_INCREMENTS.map((minuteIncrement) => (
+            <Button
+              className="w-16"
+              onClick={handleIncrementDecrement(minuteIncrement)}
+              key={minuteIncrement}
+            >
+              {formatButtonLabel(minuteIncrement)}
+            </Button>
+          ))}
 
-        {/* TODO: use Toggle component */}
-        <button onClick={() => setIsAdditionMode((prev) => !prev)}>
-          {isAdditionMode ? "+" : "-"}
-        </button>
-      </div>
+          <div className="flex flex-col items-center">
+            <Switch
+              id={`addition-mode-${title}`}
+              checked={isAdditionMode}
+              onCheckedChange={() => setIsAdditionMode((prev) => !prev)}
+            />
+            <Label htmlFor={`addition-mode-${title}`}>
+              {isAdditionMode ? "add" : "sub"}
+            </Label>
+          </div>
+        </div>
+      </CardContent>
 
-      {/* Progress Bar */}
-      <div>{minutesToHours(minutesAllTime)}h / 10,000h </div>
-    </div>
+      <CardFooter>
+        <div className="flex flex-col w-full">
+          <div>{minutesToHours(minutesAllTime)}h / 10,000h </div>
+          <Progress value={(minutesToHours(minutesAllTime) / 10_000) * 100} />
+        </div>
+      </CardFooter>
+    </Card>
   );
 }
 
