@@ -1,11 +1,16 @@
 import { useState } from "react";
 import { MINUTE_INCREMENTS } from "./constants";
 import { minutesToHours } from "@/utils/datetime";
-import { Progress } from "../ui/progress";
-import { Button } from "../ui/button";
-import { Switch } from "../ui/switch";
-import { Label } from "@radix-ui/react-label";
-import { Card, CardContent, CardFooter, CardHeader } from "../ui/card";
+import {
+  Button,
+  Card,
+  CardContent,
+  CardFooter,
+  CardHeader,
+  Label,
+  Progress,
+  Switch,
+} from "@ui";
 
 interface SkillCardProps {
   title: string;
@@ -45,6 +50,7 @@ function SkillCard({
         <div className="flex gap-1">
           {MINUTE_INCREMENTS.map((minuteIncrement) => (
             <Button
+              className="w-16"
               onClick={handleIncrementDecrement(minuteIncrement)}
               key={minuteIncrement}
             >
