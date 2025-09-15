@@ -3,6 +3,7 @@ import type { Skill } from "@/types/skill";
 
 // from Skills.tsx
 const HOURS = 60;
+// TODO make a shared constant file for this to also use in Skills.tsx
 const INITIAL_SKILLS: Skill[] = [
   { title: "Hiking", minutesAllTime: 2300 * HOURS },
   { title: "Piano", minutesAllTime: 4500 * HOURS },

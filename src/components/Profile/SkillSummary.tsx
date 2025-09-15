@@ -15,6 +15,7 @@ export default function SkillSummary({ skill }: SkillSummaryProps) {
         </div>
       </CardHeader>
       <CardContent>
+        {/* TODO make Progress a component */}
         <Progress
           value={(minutesToHours(skill.minutesAllTime) / 10_000) * 100}
           className="h-4 w-full"

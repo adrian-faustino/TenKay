@@ -14,6 +14,7 @@ function App() {
         <Routes>
           <Route path="/home" element={<Home />} />
           <Route path="/skills" element={<Skills />} />
+          {/* TODO ADD TO NAVBAR */}
           <Route path="/profile" element={<Profile />} />
         </Routes>
         {/* TODO: create app routes */}
