@@ -1,3 +1,9 @@
+import AddSkillForm from "@/components/AddSkill/AddForm";
+
 export default function AddSkill() {
-  return <div>AddSkill</div>;
+  return (
+    <>
+      <AddSkillForm />
+    </>
+  );
 }
