@@ -10,14 +10,14 @@ export default function AddSkillForm() {
     e.preventDefault();
 
     if (skillTitle.trim() === "") {
-      alert("Skill title cannot be empty");
+      // TODO: give an alert to say title can't be empty
       return;
     }
 
     const newSkill: Skill = { title: skillTitle, minutesAllTime: 0 };
+
     setSkills((prev) => [...prev, newSkill]);
     setSkillTitle("");
-    console.log("Added skill:", newSkill);
   };
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
