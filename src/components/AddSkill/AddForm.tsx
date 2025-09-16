@@ -1,11 +1,23 @@
 import { Button } from "../ui";
 import { useState } from "react";
-
+import type { Skill } from "@/types/skill";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import { INITIAL_SKILLS } from "@/mocks/initial_skills";
 export default function AddSkillForm() {
   const [skillTitle, setSkillTitle] = useState("");
+  const [_, setSkills] = useLocalStorage<Skill[]>("skills", INITIAL_SKILLS);
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(`Form submitted the skill title: ${skillTitle}`);
+
+    if (skillTitle.trim() === "") {
+      alert("Skill title cannot be empty");
+      return;
+    }
+
+    const newSkill: Skill = { title: skillTitle, minutesAllTime: 0 };
+    setSkills((prev) => [...prev, newSkill]);
+    setSkillTitle("");
+    console.log("Added skill:", newSkill);
   };
   return (
     <form onSubmit={onSubmit} className="flex flex-col gap-4">
