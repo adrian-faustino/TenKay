@@ -1,18 +1,15 @@
-import type { Skill } from "@/types/skill";
+import { INITIAL_SKILLS } from "@/mocks/initial_skills";
 import SkillCardContainer from "@/components/SkillCard/SkillCardContainer";
+import useLocalStorage from "@/hooks/useLocalStorage";
+import type { Skill } from "@/types/skill";
 
 // TODO: fetch skills from API
-const HOURS = 60;
-const INITIAL_SKILLS: Skill[] = [
-  { title: "Hiking", minutesAllTime: 2300 * HOURS },
-  { title: "Piano", minutesAllTime: 4500 * HOURS },
-  { title: "Coding", minutesAllTime: 910 * HOURS },
-];
 
 function Skills() {
+  const [skills] = useLocalStorage<Skill[]>("skills", INITIAL_SKILLS);
   return (
     <div>
-      {INITIAL_SKILLS.map((skill) => (
+      {skills.map((skill) => (
         <SkillCardContainer skill={skill} key={skill.title} />
       ))}
     </div>
