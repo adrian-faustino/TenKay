@@ -10,6 +10,8 @@ export default function Navbar() {
       <div className="flex gap-4">
         <Link to="/home">Home</Link>
         <Link to="/skills">Skills</Link>
+        <Link to="/profile">Profile</Link>
+        <Link to="/add-skill">Add Skill</Link>
       </div>
     </nav>
   );
