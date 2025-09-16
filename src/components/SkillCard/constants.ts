@@ -1,1 +1,1 @@
-export const MINUTE_INCREMENTS = [1, 5, 10];
+export const MINUTE_INCREMENTS = [5, 30, 60];
